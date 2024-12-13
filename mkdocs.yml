@@ -4,9 +4,7 @@ theme:
 nav:
   - Introduction: index.md
   - Getting Started: getting_started.md
-  - Data Preparation: data_preparation.md
   - Running BLIPSS: running_blipss.md
-  - Interpreting Results: interpreting_results.md
   - Troubleshooting: troubleshooting.md
   - Contributing: contributing.md
 

@@ -6,6 +6,6 @@ Encourage users to contribute back—file issues, request features, or submit pu
 
 ## Citing `blipss`
 
-Provide citation information and references to any academic papers describing the methodology or the BLIPSS code.
-
+If using blipss contributes to a scientific publication, please cite the article:
+[^^Suresh et al., "A 4–8 GHz Galactic Center Search for Periodic Technosignatures". 2023 AJ 165 255.^^](https://ui.adsabs.harvard.edu/abs/2023AJ....165..255S/abstract)
 
