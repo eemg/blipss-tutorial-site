@@ -1,0 +1,703 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../data_preparation/">
+      
+      
+        <link rel="next" href="../interpreting_results/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Running BLIPSS - BLIPSS Tutorial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#running-blipss" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="BLIPSS Tutorial" class="md-header__button md-logo" aria-label="BLIPSS Tutorial" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BLIPSS Tutorial
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Running BLIPSS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="BLIPSS Tutorial" class="md-nav__button md-logo" aria-label="BLIPSS Tutorial" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BLIPSS Tutorial
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_preparation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Preparation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Running BLIPSS
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Running BLIPSS
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command-Line Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter tuning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blipsspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      blipss.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compare_candspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      compare_cands.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter_candspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      filter_cands.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotting-the-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plotting the results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Run
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interpreting_results/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interpreting Results
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command-Line Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter tuning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blipsspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      blipss.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compare_candspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      compare_cands.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter_candspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      filter_cands.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotting-the-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plotting the results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Run
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="running-blipss">Running BLIPSS</h1>
+<h2 id="command-line-usage">Command-Line Usage</h2>
+<p><del class="critic">Explain the BLIPSS command-line interface, required arguments, and optional flags.</del></p>
+<h2 id="parameter-tuning">Parameter tuning</h2>
+<p><del class="critic">Discuss the main algorithm parameters (e.g., frequency resolution, thresholds for detection, periodicity candidates).</del>
+Each script in the <code>blipss/executables</code> folder has an associated <code>.cfg</code> file located in the
+<code>blipss/config</code> folder that allows you to modify the parameters for the corresponding <code>.py</code> script. 
+For example, the <code>blipss/config/blipss.cfg</code> file allows you to modify the parameters of
+the fast folding algorithm (FFA), such as the minimum and maximum trial folding period
+for the FFA search, and it also allows you to specify whether you'd like to deredden the time
+series before searching.</p>
+<h2 id="blipsspy"><code>blipss.py</code></h2>
+<p>The first step is to run the <code>executables/blipss.py</code> file. To ensure a successful run, you'll
+have to open the <code>blipss/config/blipss.cfg</code> file and modify the path for the input data. For
+example, if you stored the test data in your <code>Downloads</code> folder, then the snippet for your
+input data should look like this:</p>
+<figure>
+<p><img alt="Image title" src="../input1.png" width="800" /></p>
+<figcaption>
+<p>Image caption</p>
+</figcaption>
+</figure>
+<p>You'll have to do the same for the <code>OUTPUT_DIR</code> variable in the same script.
+Once you've made these modifications, you'll need to save the file and now you can run the 
+<code>blipss.py</code> script as follows</p>
+<pre><code>mpiexec -n &lt;nproc&gt; python -m mpi4py executables/blipss.py -i config/blipss.cfg | tee &lt;Log file&gt;
+</code></pre>
+<p>where <code>&lt;nproc&gt;</code> specifies the number of processes that will be used in this run (e.g., you can
+set it to <code>2</code>) and <code>&lt;Log file&gt;</code> is the name of the text file where the output of the command
+above will be printed (e.g., you can call it "output1.txt").</p>
+<p>If this command is successfully run, you should get an output that looks like this</p>
+<figure>
+<p><img alt="Image title" src="../output1.png" width="800" /></p>
+<figcaption>
+<p>Image caption</p>
+</figcaption>
+</figure>
+<p>This will produce two <code>.csv</code> files whose name ends with <code>...-beam0000_cands.csv</code> and 
+<code>...-beam0001_cands.csv</code>.</p>
+<p>In addition to these <code>.csv</code> files, you should obtain two plots that look like this</p>
+<figure>
+<p><img alt="Image title" src="../plt1.png" width="400" /></p>
+<figcaption>
+<p>Off-beam</p>
+</figcaption>
+</figure>
+<figure>
+<p><img alt="Image title" src="../plt2.png" width="400" /></p>
+<figcaption>
+<p>On-beam</p>
+</figcaption>
+</figure>
+<h2 id="compare_candspy"><code>compare_cands.py</code></h2>
+<p>Now that we've pre-processed the data for the two candidates, we have to compare them by running
+the <code>executables/compare_cands.py</code> script. As with the <code>blipss.py</code> script, we need to modify the
+parameters first by editing the path to the blipss repo in your local machine. To do this we have
+to open the <code>config/compare_cands.cfg</code> file and modify the path to the <code>.csv</code> files generated by 
+<code>blipss</code></p>
+<figure>
+<p><img alt="Image title" src="../input2.png" width="800" /></p>
+<figcaption>
+<p>Image caption</p>
+</figcaption>
+</figure>
+<p>Now that we've edited the path in the <code>.cfg</code> file, we are now ready to run the <code>compare_cands.py</code>
+script. To run it, we should type the following command in the terminal</p>
+<pre><code>python executables/compare_cands.py -i config/compare_cands.cfg | tee &lt;Log file&gt;
+</code></pre>
+<p>where <code>&lt;Log file&gt;</code> is the name of the file where the output will be saved to.</p>
+<p>If the run is successful, you should see an output message that looks like this</p>
+<figure>
+<p><img alt="Image title" src="../output2.png" width="800" /></p>
+<figcaption>
+<p>Image caption</p>
+</figcaption>
+</figure>
+<p>This will produce a new <code>.csv</code> file whose name ends with <code>comparecands.csv</code>.</p>
+<h2 id="filter_candspy"><code>filter_cands.py</code></h2>
+<p>Next, we have to run the <code>filter_cands.py</code> script. To do this, we have to type the following
+in the terminal</p>
+<pre><code>python filter_cands.py
+</code></pre>
+<p>and the output should be yet another <code>.csv</code> file whose name ends with <code>...filtered.csv</code>.</p>
+<h2 id="plotting-the-results">Plotting the results</h2>
+<p>Now that we've managed tho filter the candidates that have a <code>S/N&gt;20</code> and code <code>10</code>, it's time
+to plot the results for these candidates. The script we want to run is called <code>plot_cands.py</code> and
+it has an associated <code>.cfg</code> file that needs to be modified with the correct path to your local
+version of the blipss repo. Once you make these edits (following the same process as with
+previous scripts), you have to run the following command in the terminal</p>
+<pre><code>python executables/plot_cands.py -i config/plot_cands.cfg | tee &lt;Log file&gt;
+</code></pre>
+<p>where <code>&lt;Log file&gt;</code> will be the name of the file where the output of this run will be printed.
+If everything goes well, you should get the following output:</p>
+<figure>
+<p><img alt="Image title" src="../output3.png" width="800" /></p>
+<figcaption>
+<p>Image caption</p>
+</figcaption>
+</figure>
+<figure>
+<p><img alt="Image title" src="../output4.png" width="800" /></p>
+<figcaption>
+<p>Image caption</p>
+</figcaption>
+</figure>
+<p>In the example above, we had 21 candidates, so after running this last script, you will obtain one
+plot for each of the 21 candidates that looks like this</p>
+<figure>
+<p><img alt="Image title" src="../plt4.png" width="600" /></p>
+<figcaption>
+<p>Image caption</p>
+</figcaption>
+</figure>
+<p>At this point, you'll have the pipeline working and validated!</p>
+<h2 id="example-run">Example Run</h2>
+<p>Walk through a complete example—input a sample filterbank file, run BLIPSS, and interpret the output.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
