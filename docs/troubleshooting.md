@@ -2,11 +2,10 @@
 
 ##Common errors
 
-{--List known issues, error messages, and steps to resolve them.--}
 
 ###Package dependencies -- `riptide-ffa`
 
-If you try to install the required packages by running the `setup.py` script in the `blipss` repo,
+If you try to install the required packages by running the `setup.py` script provided in the `blipss` repo,
 you'll most likely encounter the following error when trying to install the `riptide-ffa` package:
 
 ```
@@ -20,5 +19,5 @@ This can be avoided by manually installing each package as described
 
 ## Where to Ask for Help
 
-Direct users to the GitHub issue tracker.
-
+Don't see your error in the list above? Feel free to reach out to `eem5633@psu.edu` and 
+describe the error you're encountering. We'll be happy to assist you in resolving it.

@@ -2,7 +2,9 @@
 
 ## How to contribute
 
-Encourage users to contribute back—file issues, request features, or submit pull requests.
+Are you interested in improving this tutorial? We welcome any feedback to try to make this website 
+a clear resource to a broad audience. You can email `eem5633@psu.edu` with any suggestions you 
+might have. Also, feel free to submit pull requests on [the website GitHub repository](https://github.com/eemg/blipss-tutorial-site).
 
 ## Citing `blipss`
 
