@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -276,18 +276,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#conda-environment" class="md-nav__link">
+  <a href="#python-environment" class="md-nav__link">
     <span class="md-ellipsis">
-      Conda environment
+      Python environment
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cloning-the-repository" class="md-nav__link">
+  <a href="#downloading-blipss" class="md-nav__link">
     <span class="md-ellipsis">
-      Cloning the repository
+      Downloading blipss
     </span>
   </a>
   
@@ -304,15 +304,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#test-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      Test Data
-    </span>
-  </a>
   
 </li>
       
@@ -430,18 +421,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#conda-environment" class="md-nav__link">
+  <a href="#python-environment" class="md-nav__link">
     <span class="md-ellipsis">
-      Conda environment
+      Python environment
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cloning-the-repository" class="md-nav__link">
+  <a href="#downloading-blipss" class="md-nav__link">
     <span class="md-ellipsis">
-      Cloning the repository
+      Downloading blipss
     </span>
   </a>
   
@@ -461,15 +452,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#test-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      Test Data
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -486,11 +468,15 @@
 
 
 <h1 id="getting-started">Getting Started</h1>
+<p>BLIPSS is distributed as a Python-based package, and its installation process typically involves obtaining the
+source code, setting up a suitable environment, and installing its dependencies. In this section,
+we will provide step-by-step instructions on how to implement each of these steps.</p>
 <h2 id="prerequisites">Prerequisites</h2>
-<p>First of all, you need to make sure you have the necessary computing equipment to proceed with
-the installation. It is recommended that you use either Linux or macOS for throughout this tutorial.</p>
+<p>It is recommended that you use a Unix-based operating system throughout this tutorial (e.g., Linux or macOS)
+and be somewhat comfortable with using basic commands in the terminal (e.g., changing directories,
+cloning a GitHub repository using <code>git</code>, and basic usage of <code>pip</code> to install any dependencies).</p>
 <p>One of the main tools we'll be using is <code>conda</code> and <code>pip</code>. If you haven't installed any of them,
-you can follow the instructions in the following pages:</p>
+you can follow the instructions based on your operating system in the following pages:</p>
 <ul>
 <li>
 <p><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html">Installing conda</a></p>
@@ -499,34 +485,59 @@ you can follow the instructions in the following pages:</p>
 <p><a href="https://pip.pypa.io/en/stable/installation/">Installing pip</a></p>
 </li>
 </ul>
+<!--<ins class="critic">NOTE: Maybe add the following subsection to the final version of the website.
+Recall that Jason didn't really like it that I used both `conda` and `pip` for the installation,
+ so I'll probably have to use only `pip`.</ins>
+-->
+
 <h2 id="installing-blipss">Installing blipss</h2>
-<h3 id="conda-environment">Conda environment</h3>
-<p>It is recommended that the user creates a <code>conda</code> environment to carry out the entire installation
-to avoid conflicts with any packages that the user might have installed in their computer. So let's
-go ahead and do that</p>
-<pre><code>conda create -n &lt;name_of_your_env&gt; python=3.10
-</code></pre>
-<p>This creates a new <code>conda</code> environment that uses Python 3.10. Since <code>blipss</code> is written in
-Python 3.8.5, it is recommended that the user creates an environment with at least this version.</p>
-<h3 id="cloning-the-repository">Cloning the repository</h3>
-<p>The next step is to download a copy of the code to your local machine. For this, you'll have to
-navigate to the directory where you would like to save <code>blipss</code> on your computer (e.g., 
-<code>/Users/eem5633/Documents/GitHub_repos/</code>). Once you decide where you'd like to save the code, 
-you'll enter this command on your terminal</p>
-<pre><code>git clone git@github.com:UCBerkeleySETI/blipss.git
-</code></pre>
-<p>This will create a new folder called "blipss" in your chosen directory. You'll have to access
+<h3 id="python-environment">Python environment</h3>
+<p>Since <code>blipss</code> is written in Python 3.8.5, it is recommended that the user creates a Python 3.9+ environment to carry out the entire installation and avoid conflicts with any existing packages that the user might have installed in their computer. So let's
+go ahead and do that.</p>
+<p>You can create a virtual environment with <code>conda</code> by copying the following command and pasting it into your terminal</p>
+<p><div class="highlight"><pre><span></span><code>conda create -n &lt;name_of_your_env&gt; python=3.10
+</code></pre></div>
+This creates a new <code>conda</code> environment that uses Python 3.10. Once the new environment is created,
+you can activate it by doing</p>
+<div class="highlight"><pre><span></span><code>conda activate &lt;name_of_your_env&gt;
+</code></pre></div>
+<p>Alternatively, you can use <code>pip</code> to accomplish the same goal. You can create a virtual environment
+with the following command</p>
+<div class="highlight"><pre><span></span><code>python -m venv /path/to/new/virtual/environment
+</code></pre></div>
+<p>To activate this environment, you then type</p>
+<div class="highlight"><pre><span></span><code>source /path/to/new/virtual/environment/bin/activate
+</code></pre></div>
+<h3 id="downloading-blipss">Downloading <code>blipss</code></h3>
+<p>The next step is downloading a copy of the <code>blipss</code> code in your local machine. You can do this
+by accessing <a href="https://drive.google.com/drive/folders/1wI8F86DbQn7SZZLBrGb-SoHheaizRXGK">the following shared google Drive folder</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Normally, the best way to do this would be cloning the <code>blipss</code> GitHub repository. However,
+the Google Drive version has some additional adjustments to <code>compare_cands.py</code> and a 
+filtering script that you wouldn't get if you just installed <code>blipss</code> from Github.</p>
+</div>
+<!--For this, you'll have to
+navigate to the directory where you would like to save `blipss` on your computer (e.g., 
+`/Users/eem5633/Documents/GitHub_repos/`). Once you decide where you'd like to save the code, 
+you'll enter this command on your terminal
+
+<div class="highlight"><pre><span></span><code>git clone git@github.com:UCBerkeleySETI/blipss.git
+</code></pre></div>
+-->
+
+<p>This will create a new folder called <code>ATA-blipss</code> in your chosen directory. You will then have to access
 that folder by typing</p>
-<pre><code>cd blipss
-</code></pre>
-<p>Once you're inside the cloned repo, you'll have to install a few packages that will allow you
+<div class="highlight"><pre><span></span><code>cd ATA-blipss
+</code></pre></div>
+<p>Once you're inside this folder, you'll have to install a few more packages that will allow you
 to run <code>blipss</code></p>
 <p><a id="package-dependencies"></a></p>
 <h3 id="package-dependencies">Package dependencies</h3>
 <p>Inside the new repo, you'll have to install the following packages: <code>astropy</code>, <code>blimpy</code>,
 <code>matplotlib</code>, <code>mpi4py</code>, <code>numpy</code>, <code>pandas</code>, <code>riptide-ffa</code>, <code>scipy</code>, and <code>tqdm</code>. This can be done
-by typing the following in your terminal</p>
-<pre><code>pip install &quot;astropy&gt;=4.0&quot; \
+by entering the following in your terminal</p>
+<p><div class="highlight"><pre><span></span><code>pip install &quot;astropy&gt;=4.0&quot; \
             &quot;blimpy&gt;=2.0.0&quot; \
             &quot;matplotlib&gt;=3.1.0&quot; \
             &quot;mpi4py&gt;=3.1.1&quot; \
@@ -535,12 +546,15 @@ by typing the following in your terminal</p>
             &quot;scipy&gt;=1.6.0&quot; \
             &quot;tqdm&gt;=4.32.1&quot; \
             &quot;riptide-ffa&quot;
-</code></pre>
-<p>Assuming you don't get any errors at this point, you're now ready start playing with the code!</p>
-<h2 id="test-data">Test Data</h2>
-<p>In order to get start working with blipss, you'll need to download the test data files in
-<a href="https://drive.google.com/drive/folders/1F-HHBgHHC0STbcoE6kM9zHHpCm0u_uVf">this shared Google Drive folder</a>.
-These <code>.fil</code> files represent the on-beam and off-beam from a test pulsar scan.</p>
+</code></pre></div>
+Assuming the installation is successful, and you don't get any errors, you're now ready to start playing with the code!</p>
+<!--## Test Data
+
+In order to validate the `blipss` pipeline, we will be working with two test data files derived from a pulsar observation of PSR J0332+5434.
+The dataset consists of two filterbank files `.fil` corresponding to the on-beam--pointing toward
+PSR J0332+5434 and exhibiting a strong, periodic signal--and the off-beam, which is pointed away from the pulsar, thereby providing a control sample where no strong periodic signal 
+should be detected. This test dataset can be downloaded [this shared Google Drive folder](https://drive.google.com/drive/folders/1F-HHBgHHC0STbcoE6kM9zHHpCm0u_uVf).
+-->
 
 
 
@@ -590,7 +604,7 @@ These <code>.fil</code> files represent the on-beam and off-beam from a test pul
     <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
     
   </body>

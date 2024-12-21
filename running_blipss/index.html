@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -277,45 +277,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#command-line-usage" class="md-nav__link">
+  <a href="#blipss-structure" class="md-nav__link">
     <span class="md-ellipsis">
-      Command-Line Usage
+      Blipss structure
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#blipsspy" class="md-nav__link">
+  <a href="#step-1-execute-blipsspy" class="md-nav__link">
     <span class="md-ellipsis">
-      blipss.py
+      Step 1: Execute blipss.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#compare_candspy" class="md-nav__link">
+  <a href="#step-2-execute-compare_candspy" class="md-nav__link">
     <span class="md-ellipsis">
-      compare_cands.py
+      Step 2: Execute compare_cands.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#filter_candspy" class="md-nav__link">
+  <a href="#step-3-execute-filter_candspy" class="md-nav__link">
     <span class="md-ellipsis">
-      filter_cands.py
+      Step 3: Execute filter_cands.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#plotting-the-results" class="md-nav__link">
+  <a href="#step-4-plot-the-results" class="md-nav__link">
     <span class="md-ellipsis">
-      Plotting the results
+      Step 4: Plot the results
     </span>
   </a>
   
@@ -396,45 +396,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#command-line-usage" class="md-nav__link">
+  <a href="#blipss-structure" class="md-nav__link">
     <span class="md-ellipsis">
-      Command-Line Usage
+      Blipss structure
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#blipsspy" class="md-nav__link">
+  <a href="#step-1-execute-blipsspy" class="md-nav__link">
     <span class="md-ellipsis">
-      blipss.py
+      Step 1: Execute blipss.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#compare_candspy" class="md-nav__link">
+  <a href="#step-2-execute-compare_candspy" class="md-nav__link">
     <span class="md-ellipsis">
-      compare_cands.py
+      Step 2: Execute compare_cands.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#filter_candspy" class="md-nav__link">
+  <a href="#step-3-execute-filter_candspy" class="md-nav__link">
     <span class="md-ellipsis">
-      filter_cands.py
+      Step 3: Execute filter_cands.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#plotting-the-results" class="md-nav__link">
+  <a href="#step-4-plot-the-results" class="md-nav__link">
     <span class="md-ellipsis">
-      Plotting the results
+      Step 4: Plot the results
     </span>
   </a>
   
@@ -456,55 +456,57 @@
 
 
 <h1 id="running-blipss">Running BLIPSS</h1>
-<h2 id="command-line-usage">Command-Line Usage</h2>
-<p><del class="critic">Explain the BLIPSS command-line interface, required arguments, and optional flags.</del></p>
-<p>The BLIPSS package currently contains six chief executable files. Each script in the <code>blipss/executables</code> folder has an associated <code>.cfg</code> file located in the
-<code>blipss/config</code> folder that allows you to modify the parameters for the corresponding <code>.py</code> script. 
-For example, the <code>blipss/config/blipss.cfg</code> file allows you to modify the parameters of
+<p>In order to validate the <code>blipss</code> pipeline, we will be working with two test data files derived from a pulsar observation of PSR J0332+5434
+The dataset consists of two filterbank files <code>.fil</code> corresponding to the on-beam--pointing toward
+PSR J0332+5434 and exhibiting a strong, periodic signal--and the off-beam, which is pointed away from the pulsar, thereby providing a control sample where no strong periodic signal
+should be detected. The test dataset can be downloaded from <a href="https://drive.google.com/drive/folders/1F-HHBgHHC0STbcoE6kM9zHHpCm0u_uVf">this shared Google Drive folder</a>.</p>
+<h2 id="blipss-structure">Blipss structure</h2>
+<p>The BLIPSS package currently contains six chief executable files. Each script in the <code>executables</code> folder has an associated <code>.cfg</code> file located in the
+<code>config</code> folder that allows you to modify the parameters for the corresponding <code>.py</code> script. 
+For example, the <code>config/blipss.cfg</code> file allows you to modify the parameters of
 the fast folding algorithm (FFA), such as the minimum and maximum trial folding period
 for the FFA search, and it also allows you to specify whether you'd like to deredden the time
 series before searching.</p>
-<h2 id="blipsspy"><code>blipss.py</code></h2>
-<p>The first step is to run the <code>executables/blipss.py</code> file.
-This script executes channel-wise FFA on input data files (filterbank or hdf5), identifies harmonics of 
-detected periods, and outputs a .csv file of candidates. An schematic of the <code>blipss.py</code> workflow
+<h2 id="step-1-execute-blipsspy">Step 1: Execute <code>blipss.py</code></h2>
+<p>Now that you've installed blipss on your computer and already downloaded the test dataset, the first thing you need to do is run the <code>executables/blipss.py</code> file.
+This script executes a channel-wise FFA on input data files (in our case, the <code>.fil</code> files), identifies harmonics of 
+detected periods, and outputs a .csv file with a list of candidates. An schematic of the <code>blipss.py</code> workflow
 is shown below:</p>
 <figure>
-<p><img alt="Image title" src="../fig1.png" width="800" /></p>
+<p><img alt="Image title" src="../diagram2.png" width="800" /></p>
 <figcaption>
-<p>Image caption</p>
+<p>A schematic representation of the blipss workflow. A sequence of N input filterbank files is processed channel-wise
+to search for periodic signals. Operations on different input files are parallelizable across multiple cores of a machine. Stage 1 outputs a list of periodicity candidates
+detected per channel for every input file. This diagram was taken from (Suresh et al. 2023).</p>
 </figcaption>
 </figure>
-<p>To ensure a successful run, you'll
-have to open the <code>blipss/config/blipss.cfg</code> file and modify the path for the input data. For
+<p>To ensure a successful run, you will first
+have to open the <code>config/blipss.cfg</code> file and modify the path for the input data. For
 example, if you stored the test data in your <code>Downloads</code> folder, then the snippet for your
 input data should look like this:</p>
 <figure>
 <p><img alt="Image title" src="../input1.png" width="800" /></p>
 <figcaption>
-<p>Image caption</p>
+<p>Block of code for the input data in the <code>blipss.cfg</code> file.</p>
 </figcaption>
 </figure>
-<p>You'll have to do the same for the <code>OUTPUT_DIR</code> variable in the same script.
-Once you've made these modifications, you'll need to save the file and now you can run the 
+<p>You must do the same for the <code>OUTPUT_DIR</code> variable in the same <code>.cfg</code> file and enter the path to the location where you want to store the output of the <code>blipss.py</code> script.
+Once you've made these modifications, you will save the file and then run the 
 <code>blipss.py</code> script as follows</p>
-<pre><code>mpiexec -n &lt;nproc&gt; python -m mpi4py executables/blipss.py -i config/blipss.cfg | tee &lt;Log file&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code>mpiexec -n &lt;nproc&gt; python -m mpi4py executables/blipss.py -i config/blipss.cfg | tee &lt;Log file&gt;
+</code></pre></div>
 <p>where <code>&lt;nproc&gt;</code> specifies the number of processes that will be used in this run (e.g., you can
 set it to <code>2</code>) and <code>&lt;Log file&gt;</code> is the name of the text file where the output of the command
 above will be printed (e.g., you can call it <code>output1.txt</code>).</p>
-<p>If this command is successfully run, you should get an output that looks like this</p>
+<p>If this command is executed successfully, you should get an output that looks like this</p>
 <figure>
 <p><img alt="Image title" src="../output1.png" width="800" /></p>
-<figcaption>
-<p>Image caption</p>
-</figcaption>
+<figcaption></figcaption>
 </figure>
-<p>This will produce two <code>.csv</code> files whose name ends with <code>...-beam0000_cands.csv</code> and 
-<code>...-beam0001_cands.csv</code>. Each of these files contain the information about the radio
-frquency used (in MHz), the number of bins, the best width, the period of the pulsar (s), the
-signal-to-noise ratio (S/N), and the harmonic flag for a specific channel. </p>
-<p>In addition to these <code>.csv</code> files, you should obtain two plots that look like this</p>
+<p>This will produce two <code>.csv</code> files whose name ends with <code>beam0000_cands.csv</code> and 
+<code>beam0001_cands.csv</code>. Each of these files contain the information about the radio
+frequency used (in MHz), the number of bins, the best width, the period of the pulsar (s), the
+signal-to-noise ratio (S/N), and the harmonic flag for a specific channel. In addition to these <code>.csv</code> files, you should obtain two plots that look like this</p>
 <figure>
 <p><img alt="Image title" src="../plt1.png" width="400" /></p>
 <figcaption>
@@ -517,73 +519,75 @@ signal-to-noise ratio (S/N), and the harmonic flag for a specific channel. </p>
 <p>On-beam</p>
 </figcaption>
 </figure>
-<h2 id="compare_candspy"><code>compare_cands.py</code></h2>
+<h2 id="step-2-execute-compare_candspy">Step 2: Execute <code>compare_cands.py</code></h2>
 <p>Now that we've processed the data for the two candidates, we have to compare them by running
 the <code>executables/compare_cands.py</code> script. This script compares the periodicity detections across
 a set of N <code>.csv</code> files generated by <code>blipss.py</code>. For every unique candidate period, an N-digit
 binary code is generated, wherein ones and zeros represent detections and non-detections,
 respectively.</p>
-<p>As with the <code>blipss.py</code> script, we need to modify the
-parameters first by editing the path to the blipss repo in your local machine. To do this we have
-to open the <code>config/compare_cands.cfg</code> file and modify the path to the <code>.csv</code> files generated by 
-<code>blipss</code></p>
+<p>As with the <code>blipss.py</code> script, we first need to modify the <code>.cfg</code> file by editing the path to the blipss repo in your local machine. To do this we have
+to open the <code>config/compare_cands.cfg</code> file and enter the path to the directory where the <code>.csv</code> files generated by 
+<code>blipss.py</code> were stored. This is shown in the following code snippet</p>
 <figure>
 <p><img alt="Image title" src="../input2.png" width="800" /></p>
 <figcaption>
-<p>Image caption</p>
+<p>Block of code for the input data in the <code>compare_cands.cfg</code> file.</p>
 </figcaption>
 </figure>
-<p>Now that we've edited the path in the <code>.cfg</code> file, we are now ready to run the <code>compare_cands.py</code>
-script. To run it, we should type the following command in the terminal</p>
-<pre><code>python executables/compare_cands.py -i config/compare_cands.cfg | tee &lt;Log file&gt;
-</code></pre>
-<p>where <code>&lt;Log file&gt;</code> is the name of the file where the output will be saved to.</p>
+<p>Once you've edited the path in the <code>.cfg</code> file, you are now ready to run the <code>compare_cands.py</code>
+script. To run execute this, you need to type the following command in the terminal</p>
+<p><div class="highlight"><pre><span></span><code>python executables/compare_cands.py -i config/compare_cands.cfg | tee &lt;Log file&gt;
+</code></pre></div>
+where <code>&lt;Log file&gt;</code> is the name of the file where the output will be saved to.</p>
 <p>If the run is successful, you should see an output message that looks like this</p>
 <figure>
 <p><img alt="Image title" src="../output2.png" width="800" /></p>
-<figcaption>
-<p>Image caption</p>
-</figcaption>
+<figcaption></figcaption>
 </figure>
 <p>This will produce a new <code>.csv</code> file whose name ends with <code>comparecands.csv</code>. </p>
-<h2 id="filter_candspy"><code>filter_cands.py</code></h2>
-<p>Next, we have to run the <code>filter_cands.py</code> script. This script is going to narrow down the search
-by selecting the channels that have a <code>S/N&gt;20</code> and have code <code>10</code>.</p>
-<p>To run this script, we have to type the following in the terminal</p>
-<pre><code>python filter_cands.py
-</code></pre>
-<p>and the output should be yet another <code>.csv</code> file whose name ends with <code>...filtered.csv</code>.</p>
-<h2 id="plotting-the-results">Plotting the results</h2>
+<h2 id="step-3-execute-filter_candspy">Step 3: Execute <code>filter_cands.py</code></h2>
+<p>Next, we have to run the <code>filter_cands.py</code> script. This script is going to narrow down the search of periodic signals
+by selecting the channels that have a <code>S/N&gt;20</code> and have code <code>10</code>. To run this script, we have
+to type the following command in the terminal</p>
+<div class="highlight"><pre><span></span><code>python filter_cands.py
+</code></pre></div>
+<p>This will output yet another <code>.csv</code> file whose name ends with <code>filtered.csv</code>.</p>
+<h2 id="step-4-plot-the-results">Step 4: Plot the results</h2>
 <p>Now that we've managed to filter the candidates that have a <code>S/N&gt;20</code> and code <code>10</code>, it's time
-to plot the results for these candidates. The script we want to run is called <code>plot_cands.py</code> and
+to plot the results for these candidates. The script that we have to run is called <code>plot_cands.py</code> and
 it has an associated <code>.cfg</code> file that needs to be modified with the correct path to your local
 version of the blipss repo. Once you make these edits (following the same process as with
 previous scripts), you have to run the following command in the terminal</p>
-<pre><code>python executables/plot_cands.py -i config/plot_cands.cfg | tee &lt;Log file&gt;
-</code></pre>
-<p>where <code>&lt;Log file&gt;</code> will be the name of the file where the output of this run will be printed.
-If everything goes well, you should get the following output:</p>
+<p><div class="highlight"><pre><span></span><code>python executables/plot_cands.py -i config/plot_cands.cfg | tee &lt;Log file&gt;
+</code></pre></div>
+If everything goes well, you should see the following output</p>
 <figure>
 <p><img alt="Image title" src="../output3.png" width="800" /></p>
-<figcaption>
-<p>Image caption</p>
-</figcaption>
+<figcaption></figcaption>
+</figure>
+<figure>
+<p><img alt="Image title" src="../dots.svg" width="35" /></p>
+<figcaption></figcaption>
 </figure>
 <figure>
 <p><img alt="Image title" src="../output4.png" width="800" /></p>
-<figcaption>
-<p>Image caption</p>
-</figcaption>
+<figcaption></figcaption>
 </figure>
-<p>In the example above, we had 21 candidates, so after running this last script, you will obtain one
+<p>In the example above, we had 21 candidates, so after running the <code>plot_cands.py</code> script, you will obtain one
 plot for each of the 21 candidates that looks like this</p>
 <figure>
 <p><img alt="Image title" src="../plt4.png" width="600" /></p>
 <figcaption>
-<p>Image caption</p>
+<p>Plot of the <code>P = 1.42938 s</code> candidate signal. The left column shows periodograms derived from each data file, the
+ON-beam and OFF-beam. The candidate period is indicated by the red dashed vertical lines. The right column shows the
+average pulse profiles (top subplot) and phase-time diagrams (bottom subplot).</p>
 </figcaption>
 </figure>
-<p>The candidate period is indicated by the red vertical dashed line.</p>
+<p>A “true” signal would appear as a strong peak in the periodogram at the determined period, as
+well as a vertical bar in the phase-time diagram for the ON-beam (top subplots) but not the OFF-beam (bottom
+subplots). Figure 1 shows one plot of the signal with <code>P = 1.42938 s</code>. As we can see in this case,
+the red dashed coincides with the the most prominent peak in the periodogram, which indicates that
+pulsed radio signals were detected. </p>
 <p>At this point, you'll have the pipeline working and validated!</p>
 
 
@@ -634,7 +638,7 @@ plot for each of the 21 candidates that looks like this</p>
     <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
     
   </body>
